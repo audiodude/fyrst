@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+  <title>Find anyone's first tweet</title>
+  <link rel="stylesheet" type="text/css" href="/static/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  <script type="text/javascript" src="/static/js/zepto.min.js"></script>
+  <script type="text/javascript" src="/static/js/main.js"></script>
+</head>
+<body>
+  <h1>First tweet</h1>
+  <h2>Find anyone's first tweet</h2>
+  <span id="input-label">Twitter username:</span>
+  <input id="screen-name">
+  <button id="submit-btn" onclick="fetch()">Fetch!</button>
+
+  <div id="error" style="display: none;">
+    Sorry, there was an error loading the Twitter data.
+  </div>
+
+  <div id="loading" style="display: none;"></div>
+
+  <div id="tweet" style="display: none;"></div>
+</body>
+</html>

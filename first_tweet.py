@@ -17,7 +17,7 @@ def get_first_tweet(screen_name):
     }
     if oldest_id:
       params['max_id'] = oldest_id
-    print('Fetching next batch...')
+      params['trim_user'] = 1,
     resp = api.request('statuses/user_timeline', params)
     data = resp.response.json()
     count = len(data)
@@ -26,8 +26,4 @@ def get_first_tweet(screen_name):
       potential_first_tweet = data[-1]
 
   return potential_first_tweet
-
-
-if __name__ == '__main__':
-  print(get_first_tweet('audiodude'))
   
