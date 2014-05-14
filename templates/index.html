@@ -7,17 +7,21 @@
   <script type="text/javascript" src="/static/js/main.js"></script>
 </head>
 <body>
-  <h1>First tweet</h1>
+  <h1>First Tweet</h1>
   <h2>Find anyone's first tweet</h2>
-  <span id="input-label">Twitter username:</span>
-  <input id="screen-name">
-  <button id="submit-btn" onclick="fetch()">Fetch!</button>
+  <form onsubmit="fetch(); return false;">
+    <span id="input-label">Twitter username:</span>
+    <input id="screen-name">
+    <button id="submit-btn" onclick="fetch()">Fetch!</button>
+  </form>
 
   <div id="error" style="display: none;">
     Sorry, there was an error loading the Twitter data.
   </div>
 
-  <div id="loading" style="display: none;"></div>
+  <div id="loading" style="display: none;">
+    <img src="/static/images/spinner.gif">
+  </div>
 
   <div id="tweet" style="display: none;"></div>
 </body>

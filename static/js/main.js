@@ -6,10 +6,16 @@ function fetch() {
       'screen_name': $('#screen-name').val()
     },
     'dataType': 'json',
+    'beforeSend': function() {
+      $('#error').hide();
+      $('#loading').show();
+    },
     'success': on_fetch_success,
-    'error': on_fetch_error
+    'error': on_fetch_error,
+    'complete': function() {
+      $('#loading').hide();
+    }
   });
-  window.console.log('ajax dispatched');
 };
 
 function on_fetch_success(data, status, xhr) {
