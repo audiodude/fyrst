@@ -7,6 +7,7 @@ function fetch() {
     },
     'dataType': 'json',
     'beforeSend': function() {
+			$('#tweet').text('');
       $('#error').hide();
       $('#loading').show();
     },
