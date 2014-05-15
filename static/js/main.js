@@ -38,12 +38,9 @@ function on_fetch_success(data, status, xhr) {
 }
 
 function on_load_tweet_success(data, status, xhr) {
-  window.console.log(data);
-  result = $(data.html);
-
-  $('#tweet').html(result);
-  result.find('script').appendTo('#tweet');
-  $('#tweet').show();
+  $('#tweet').html(data.html);
+  twttr.widgets.load();
+  window.setTimeout(function() { $('#tweet').show(); }, 1500);
 }
 
 function on_error(xhr, errorType, error) {

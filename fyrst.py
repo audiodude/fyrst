@@ -28,5 +28,5 @@ def get_first_tweet(screen_name):
   return potential_first_tweet
   
 def get_tweet(tweet_id):
-  resp = api.request('statuses/oembed', {'id': tweet_id})
+  resp = api.request('statuses/oembed', {'id': tweet_id, 'omit_script': 1})
   return resp.response.json()
