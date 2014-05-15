@@ -1,11 +1,9 @@
 import os
-from TwitterAPI import TwitterAPI
+from twython import Twython
 
+api = Twython(os.environ['TWITTER_CONSUMER_KEY'],
+              access_token=os.environ['TWITTER_OAUTH2_ACCESS_TOKEN'])
 
-api = TwitterAPI(os.environ['TWITTER_CONSUMER_KEY'],
-                 os.environ['TWITTER_CONSUMER_SECRET'],
-                 os.environ['TWITTER_ACCESS_TOKEN_KEY'],
-                 os.environ['TWITTER_ACCESS_TOKEN_SECRET'])
 
 def get_first_tweet(screen_name):
   count = None
@@ -18,16 +16,11 @@ def get_first_tweet(screen_name):
     if oldest_id:
       params['max_id'] = oldest_id
       params['trim_user'] = 1,
-    resp = api.request('statuses/user_timeline', params)
-    data = resp.response.json()
+    data = api.get_user_timeline(**params)
     count = len(data)
     if count == 1:
+      data[0]['html'] = api.get_oembed_tweet(id=data[0]['id_str'])['html']
       return data[0]
     else:
       oldest_id = data[-1]['id_str']
-  
-def get_tweet(tweet_id):
-  print('Fetching tweet_id: %s' % tweet_id)
-  resp = api.request('statuses/oembed', {'id': tweet_id, 'omit_script': 1})
-  print(repr(resp.headers))
-  return resp.response.json()
+
