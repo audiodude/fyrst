@@ -1,3 +1,28 @@
+body {
+  text-align: center;
+}
+
+h1 {
+  font-family: "Helvetica Neue",Arial,sans-serif;
+  font-size: 48px;
+  margin: 30px auto;
+  width: 450px;
+}
+
+h2 {
+  font-family: "Helvetica Neue",Arial,sans-serif;
+  font-size: 24px;
+  font-style: italic;
+  margin: 20px auto;
+  width: 450px;
+}
+
+#form,
+#loading {
+  margin: 20px auto;
+  width: 450px;
+}
+
 #tweet {
   margin: 20px auto;
   width: 450px;

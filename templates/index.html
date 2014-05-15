@@ -10,11 +10,13 @@
 <body>
   <h1>First Tweet</h1>
   <h2>Find anyone's first tweet</h2>
-  <form onsubmit="return false;">
-    <span id="input-label">Twitter username:</span>
-    <input id="screen-name">
-    <button id="submit-btn" onclick="fetch()">Fetch!</button>
-  </form>
+  <div id="form">
+    <form onsubmit="return false;">
+      <span id="input-label">Twitter username:</span>
+      <input id="screen-name">
+      <button id="submit-btn" onclick="fetch()">Fetch!</button>
+    </form>
+  </div>
 
   <div id="error" style="display: none;">
     Sorry, there was an error loading the Twitter data.
