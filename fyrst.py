@@ -10,7 +10,7 @@ api = TwitterAPI(os.environ['TWITTER_CONSUMER_KEY'],
 def get_first_tweet(screen_name):
   count = None
   oldest_id = None
-  while count != 0 or count is None:
+  while True:
     params = {
       'screen_name': screen_name,
       'count': 200,
@@ -21,12 +21,13 @@ def get_first_tweet(screen_name):
     resp = api.request('statuses/user_timeline', params)
     data = resp.response.json()
     count = len(data)
-    if count:
-      oldest_id = int(data[-1]['id']) - 1
-      potential_first_tweet = data[-1]
-
-  return potential_first_tweet
+    if count == 1:
+      return data[0]
+    else:
+      oldest_id = data[-1]['id_str']
   
 def get_tweet(tweet_id):
+  print('Fetching tweet_id: %s' % tweet_id)
   resp = api.request('statuses/oembed', {'id': tweet_id, 'omit_script': 1})
+  print(repr(resp.headers))
   return resp.response.json()

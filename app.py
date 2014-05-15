@@ -27,7 +27,9 @@ def first_tweet():
     first_tweet = json.loads(first_tweet_str)
   else:
     first_tweet = fyrst.get_first_tweet(screen_name)
-    mc.set(screen_name, json.dumps(first_tweet))
+    print(repr(first_tweet))
+    if 'errors' not in first_tweet:
+      mc.set(screen_name, json.dumps(first_tweet))
 
   return jsonify(first_tweet)
 
