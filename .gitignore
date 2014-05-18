@@ -1,3 +1,5 @@
 venv
 *.pyc
 twitter_env
+twitter_corpus
+twitter_normalized

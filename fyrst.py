@@ -24,3 +24,26 @@ def get_first_tweet(screen_name):
     else:
       oldest_id = data[-1]['id_str']
 
+
+def get_all_tweets(screen_name):
+  """All is a relative term, this API only returns the 3200 most recent."""
+  oldest_id = None
+  while True:
+    params = {
+      'screen_name': screen_name,
+      'count': 200,
+    }
+    if oldest_id:
+      params['max_id'] = oldest_id
+      params['trim_user'] = 1,
+    data = api.get_user_timeline(**params)
+    first = True
+    for tweet in data:
+      if oldest_id and first:
+        first = False
+        continue
+      yield tweet
+    if len(data) == 1:
+      return
+    else:
+      oldest_id = data[-1]['id_str']
