@@ -31,7 +31,7 @@ if __name__ == '__main__':
                              CORPUS_DIR)
   corpus = get_corpus(corpus_root)
 
-  # concordance_across(corpus)
+  concordance_across(corpus)
 
   # fileids = ('audiodude',)  # ('audiodude', 'itsabbyyyyy', 'BarackObama'):
   # for fileid in fileids:
